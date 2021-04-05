@@ -1,0 +1,85 @@
+class Siswa
+{
+	int NIM;
+	String nama;
+	int teori;
+	int praktek;
+	
+	public void setNIM(int NIM)
+	{
+		this.NIM = NIM;
+	}
+	
+	public void setNama(String nama)
+	{
+		this.nama = nama;
+	}
+	
+	public void setTeori(int teori)
+	{
+		this.teori = teori;
+	}
+	
+	public void setPraktek(int praktek)
+	{
+		this.praktek = praktek;
+	}
+	
+	public int getNIM()
+	{
+		return this.NIM;
+	}
+	
+	public String getNama()
+	{
+		return this.nama;
+	}
+	
+	public int getTeori()
+	{
+		return this.teori;
+	}
+	
+	public int getPraktek()
+	{
+		return this.praktek;
+	}
+	
+	public double getRata()
+	{
+		return (this.teori+this.praktek)/2;
+	}
+}
+
+
+public class nilaiSiswa
+{
+	public static void main(String[] args) {
+		Siswa Adel = new Siswa();
+	
+		Adel.setNIM(12079);
+		Adel.setNama("Adela Salma Nadhifa");
+		Adel.setTeori(81);
+		Adel.setPraktek(100);
+		
+		System.out.println("NIM : " + Adel.getNIM());
+		System.out.println("Nama : " + Adel.getNama());
+		System.out.println("Nilai Teori : " + Adel.getTeori());
+		System.out.println("Nilai Praktek : " + Adel.getPraktek());
+		System.out.println("Nilai Rata-rata : " + Adel.getRata());
+
+		Siswa Levi = new Siswa();
+		
+		Levi.setNIM(2512);
+		Levi.setNama("Levi Ackerman");
+		Levi.setTeori(89);
+		Levi.setPraktek(100);
+		
+	
+		System.out.println("NIM : " + Levi.getNIM());
+		System.out.println("Nama : " + Levi.getNama());
+		System.out.println("Nilai Teori : " + Levi.getTeori());
+		System.out.println("Nilai Praktek : " + Levi.getPraktek());
+		System.out.println("Nilai Rata-rata : " + Levi.getRata());
+	}
+}
