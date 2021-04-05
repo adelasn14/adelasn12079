@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class daftarNilai
+{
+   public static void main (String args[])
+   {
+    Scanner input=new Scanner(System.in);
+
+    System.out.print("Masukan jumlah nilai yang akan ditampung : ");
+    int a=input.nextInt();
+
+    String huruf[]=new String[a];
+    int nilai[]=new int[a];
+
+    for (int l=0; l<a; l++)
+        {
+            System.out.println("Nilai ke : " +(l+1));
+            System.out.print("Masukkan nilai : ");
+            nilai[l]=input.nextInt();
+
+            if (nilai[l]>= 85)
+            {
+                huruf[l]="A";
+            }
+            else if (nilai [l]>=70 && nilai [l] < 85)
+            {
+                huruf[l]="B";
+            }
+            else if (nilai [l]>=60 && nilai [l] < 70)
+            {
+                huruf[l]="C";
+            }
+            else if (nilai [l]>= 50 && nilai [l] < 60)
+            {
+                huruf[l]="D";
+            }
+            else
+            {
+                huruf[l]="E";
+            } 
+        }
+    
+    for (int l=0; l<a; l++)
+        {
+            System.out.println("Nilai "+nilai[l]+", Nilai hurufnya adalah "+huruf[l]);
+        }
+    }
+}
