@@ -1,0 +1,118 @@
+public class Queue
+{
+    int size = 5;
+    int items[] = new int[size];
+    int front, rear;
+
+
+    Queue()
+    {
+        front = -1;
+        rear = -1;
+    }
+
+    // cek apakah antrian penuh
+    boolean isFull()
+    {
+        if (front == 0 && rear == size-1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // cek apakah antrian kosong
+    boolean isEmpty()
+    {
+        if (front == -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // memasukkan elemen dalam antrian
+    void enQueue(int element)
+    {
+        // cek dulu apakah antrian penuh
+        if (isFull())
+        {
+            System.out.println("Antrian Penuh.");
+        }
+        else
+        {
+            if (front == -1)
+            {
+                front = 0;
+            }
+            rear++;
+
+            // masukkan elemen di rear
+            items[rear] = element;
+            System.out.println(element + " telah dimasukkan");
+        }
+    }
+
+        int deQueue()
+        {
+            // variabel lokal
+            int element;
+
+            // cek apakah antrian kosong
+            if (isEmpty())
+            {
+                System.out.println("Antrian kosong.");
+                return -1;
+            }
+            else
+            {
+                // menghapus antrian dari front
+                element = items[front];
+
+                // jika elemen hanya punya 1 elemen
+                if (front >= rear)
+                {
+                    front = -1;
+                    rear = -1;
+                }
+                else
+                {
+                    // set pointer selanjutnya sebagai front
+                    front++;
+                }
+
+                System.out.println("Elemen " + element + " dihapus.");
+                return element;
+            }
+        }
+
+    void tampilQueue()
+    {
+        int i;
+        if (isEmpty())
+        {
+            System.out.println("Antrian kosong.");
+        }
+        else
+        {
+            // tampilkan front
+            System.out.println("\n Front index -> " + front);
+
+            // tampilkan elemen pada antrian
+            System.out.println("Items -> ");
+            for (i = front; i <= rear; i++)
+            {
+                System.out.println(items[i] + " ");
+            }
+
+            // tampilkan rear
+            System.out.println("\n Rear index -> " + rear);
+        }
+    }
+}
