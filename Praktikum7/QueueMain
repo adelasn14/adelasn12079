@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class QueueMain
+{
+    public static void main(String[] agrs)
+    {
+        // buat objek dari class Queue
+        Queue q = new Queue();
+        Scanner input = new Scanner(System.in);
+        Scanner choice = new Scanner(System.in);
+
+        char option = 't';
+
+        String ketpenuh;
+        boolean hasilpenuh = q.isFull();
+        if (hasilpenuh)
+        {
+            ketpenuh = "Ya";
+        }
+        else
+        {
+            ketpenuh = "Tidak";
+        }
+        System.out.println("Apakah queue penuh? : " +ketpenuh);
+
+        System.out.println("\n1. Sebelum Queue terisi data.");
+        q.tampilQueue();
+
+        do
+        {
+            System.out.println("\nMasukkan data ke dalam queue : ");
+            int data = input.nextInt();
+            q.enQueue(data);
+
+            System.out.println ("\nApakah ingin input lagi? <y/t> : ");
+            option = choice.next().charAt(0);
+
+        }
+        while (option == 'y');
+        System.out.println(q);
+
+        System.out.println("\nSetelah Queue terisi data.");
+        q.tampilQueue();
+
+        String ketkosong;
+        boolean hasilkosong = q.isEmpty();
+        if (hasilkosong)
+        {
+            ketkosong = "Ya";
+        }
+        else
+        {
+            ketkosong = "Tidak";
+        }
+        System.out.println("\nApakah queue kosong? : " +ketkosong);
+        
+        System.out.println("\n2. Sebelum Elemen pertama terhapus.");
+        q.tampilQueue();
+
+        System.out.println("\nSetelah Elemen pertama terhapus.");
+        q.deQueue();
+        q.tampilQueue();        
+    }
+}
