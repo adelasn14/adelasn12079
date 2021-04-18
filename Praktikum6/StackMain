@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+class StackMain {
+    public static void main(String args[])
+    {
+        Scanner input = new Scanner(System.in);
+        Scanner choice = new Scanner(System.in);
+
+        Stack<String> datas = new Stack<>();
+        char option = 't';
+
+        do
+        {
+            System.out.println("Masukkan data ke dalam stack : ");
+            String data = input.nextLine();
+            datas.push(data);
+
+            System.out.println ("Apakah ingin input lagi? <y/t> : ");
+            option = choice.next().charAt(0);
+
+        }
+        while (option == 'y');
+        System.out.println(datas); 
+        
+        String top = datas.peek();
+        System.out.println("Elemen paling atas : " +top);
+
+        String element = datas.pop();
+        System.out.println("Elemen yang dihapus : " +element);
+
+        String keterangan;
+        boolean hasil = datas.isEmpty();
+        if (hasil)
+        {
+            keterangan = "Ya";
+        }
+        else
+        {
+            keterangan = "Tidak";
+        }
+        System.out.println("Apakah stack kosong? : " +keterangan);
+    }
+}
