@@ -22,5 +22,5 @@ public abstract class Kendaraan {
 		this.jumlahRoda = jumlahRoda;
 	}
 
-	public abstract void nyalakan();
+	public abstract void jenis();
 }
