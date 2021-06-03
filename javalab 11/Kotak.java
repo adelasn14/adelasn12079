@@ -1,4 +1,5 @@
-public class Kotak extends BangunDatar{
+public class Kotak extends BangunDatar implements Resizeable
+{
 		private double panjang;
 		private double lebar;
 
@@ -18,4 +19,6 @@ public class Kotak extends BangunDatar{
 		public double getKeliling() {
 		  	return 2.0 * (panjang + lebar);
 		}
+
+		public abstract void resize();
     }
