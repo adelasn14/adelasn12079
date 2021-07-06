@@ -7,57 +7,35 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
-import com.mysql.jdbc.Driver;
 import javax.swing.table.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JComboBox;
-import javax.swing.JSeparator;
-import javax.swing.JToggleButton;
-import javax.swing.JList;
-import java.awt.List;
-import javax.swing.JRadioButtonMenuItem;
 import java.awt.ScrollPane;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.Timer;
-import javax.swing.AbstractListModel;
-import javax.swing.JSplitPane;
+import java.sql.Timestamp;
 import java.awt.SystemColor;
-import javax.swing.UIManager;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.JScrollPane;
 
 public class sistemparkir {
 
 	private JFrame frame;
 	private JTextField txtNopol;
-	private JTextField txtTipe;
-	private JTextField txtJam_masuk;
-	private JTextField txtJam_keluar;
-	private JTextField textField;
-	private JTextField txt;
+	private JTextField txtMasuk;
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://127.0.0.1/adel";
@@ -71,6 +49,10 @@ public class sistemparkir {
     private JTable table;
     private JTextField txtTanggal;
     private JTextField txtJam;
+    private JTable tabelDataParkir;
+	private String tanggal;
+	private String jamMasuk;
+	private String id;
     
 	/**
 	 * Launch the application.
@@ -191,26 +173,25 @@ public class sistemparkir {
 		lblJenisKendaraan.setBounds(22, 112, 101, 14);
 		frame.getContentPane().add(lblJenisKendaraan);
 		
-		JComboBox txtTipe = new JComboBox();
-		txtTipe.setModel(new DefaultComboBoxModel(new String[] {"Mobil", "Motor", "Truk"}));
-		txtTipe.setToolTipText("");
-		txtTipe.setBounds(131, 111, 106, 17);
-		frame.getContentPane().add(txtTipe);		
+		JComboBox<String> cbTipe = new JComboBox<String>();
+		cbTipe.setModel(new DefaultComboBoxModel<String>(new String[] {"Mobil", "Motor", "Truk"}));
+		cbTipe.setToolTipText("");
+		cbTipe.setBounds(131, 111, 106, 17);
+		frame.getContentPane().add(cbTipe);		
 		
 		JButton btnJamMasuk = new JButton("Jam Masuk");
 		btnJamMasuk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nopol = txtNopol.getText().toString().trim();
-				String tipe = (String)txtTipe.getSelectedItem().toString().trim();
-				String tanggal = txtTanggal.getText().toString().trim();
-				int jam_masuk = Integer.parseInt(txtJam_masuk.getText());
-						
-				insert(nopol,tipe,tanggal,jam_masuk);//method digunakan untuk insert data
+				String tipe = (String)cbTipe.getSelectedItem().toString().trim();
+				
+				insert(nopol,tipe);//method digunakan untuk insert data
 				show();
 				txtNopol.setText("");
-				txtTipe.setSelectedItem("");
+				cbTipe.setSelectedItem("");
 				txtTanggal.setText("");
-				txtJam_masuk.setText("");
+				txtMasuk.setText("");
+				
 			}
 		});
 		
@@ -242,11 +223,10 @@ public class sistemparkir {
 		btnDelete.setBounds(330, 147, 89, 33);
 		frame.getContentPane().add(btnDelete);
 		
-		ScrollPane scrollPane = new ScrollPane();
+		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 191, 409, 118);
 		frame.getContentPane().add(scrollPane);
-		
-		
+			
 		tabelData = new JTable();
 		tabelData.addMouseListener(new MouseAdapter() {
 			@Override
@@ -254,10 +234,19 @@ public class sistemparkir {
 				
 			}
 		});
+		
+		scrollPane.setViewportView(tabelData);
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+			}
+		});
+		
+
 	}
 	
 	
-	public void insert(String nopol,String tipe, String tanggal, int jam_masuk)
+	public void insert(String nopol, String tipe)
 	{
 		try {
             Class.forName(JDBC_DRIVER);
@@ -265,16 +254,16 @@ public class sistemparkir {
    
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             
- 
             stmt = conn.createStatement();
             
-            String sql = "INSERT INTO parkir (nopol,tipe,tanggal,jam_masuk) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO parkir (nopol,tipe,tanggal,jamMasuk) VALUES (?,?,CURDATE(),CURTIME())";
             
             PreparedStatement pms = conn.prepareStatement(sql);
-            pms.setString(1, nopol);
-            pms.setString(2, tipe);
-            pms.setString(3, tanggal);
-            pms.setInt(4, jam_masuk);
+            pms.setString(1, id);
+            pms.setString(3, tipe);
+            pms.setString(2, nopol);
+            pms.setString(4, tanggal);
+            pms.setString(5, jamMasuk);
             
             pms.execute();
            
@@ -296,12 +285,11 @@ public class sistemparkir {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Nomor Polisi");
-            model.addColumn("Tipe");
             model.addColumn("Tanggal");
             model.addColumn("Jam Masuk");
             model.addColumn("Jam Keluar");
-            model.addColumn("Biaya");
             model.addColumn("Jenis Kendaaran");
+            model.addColumn("Biaya");
  
             stmt = conn.createStatement();
             String sql = "SELECT * FROM parkir";
@@ -309,12 +297,11 @@ public class sistemparkir {
             rs = stmt.executeQuery(sql);
             while(rs.next()) {
             	model.addRow(new Object[] {
-            		rs.getString("id"),
             		rs.getString("nopol"),
-            		rs.getString("tipe"),
             		rs.getString("tanggal"),
             		rs.getString("jam_masuk"),
-            		rs.getString("jam_keluar")
+            		rs.getString("jam_keluar"),
+            		rs.getString("tipe")
             	});
             	i++;
             }
@@ -325,7 +312,7 @@ public class sistemparkir {
             tabelData.setModel(model);
             tabelData.setAutoResizeMode(0);
             //modifikasi lebar kolom (optional)
-            tabelData.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tabelData.getColumnModel().getColumn(0).setPreferredWidth(60);
             tabelData.getColumnModel().getColumn(1).setPreferredWidth(100);
             tabelData.getColumnModel().getColumn(2).setPreferredWidth(200);
             tabelData.getColumnModel().getColumn(3).setPreferredWidth(100);
