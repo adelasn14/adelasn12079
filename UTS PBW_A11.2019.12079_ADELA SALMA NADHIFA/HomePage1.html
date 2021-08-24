@@ -1,0 +1,371 @@
+<html>
+<head>
+	<title>Homepage</title>
+	<style>
+	*{
+	  margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif, arial;
+	 }
+	#wrapper {
+			  width: 100%;
+			  height: auto;
+			 }
+	#center-box {
+				 width: 80%;
+				 margin: 0 auto;
+				 height: auto;
+				}
+	#header-wrapper {
+					 width: 100%;
+					 height: 140px;
+					 background-color: #A8D5E8;
+					}
+	#header {
+			 width: 90%;
+			 margin: 0 auto;
+			}
+	#nav {
+		  width: 100%;
+		  height: 20px;
+		  margin: 0 auto;
+		 }
+	#ul-nav {
+			 float: right;
+			}
+	#ul-nav a {
+			   font-weight: bold;
+			   color: black;
+			   text-decoration: none;
+			  }
+	#ul-nav li {
+				display: inline;
+			   }
+	#header-img	{
+				 width: 10%;
+				 float: left;
+				}
+	#header-img img {
+					 width: 75px;
+					 height: 100px;
+					 border-radius: 30%;
+					}
+	#header-info-img {
+					  width: 40%;
+					  float: left;
+					 }
+	#header-info-img ul li {
+							display: block;
+							margin-bottom: 5px;
+						   }	
+	#header-search {
+					font-weight: bold;
+					width: 40%;
+					float: right;
+					text-align: right;
+					padding-top: 50px;
+				   }
+				   
+	#header-search input[type="text"] {
+									   width: 200px;
+									   border-radius: 2px;
+									   border: 0.5px solid black;
+									   height: 20px;
+									  }
+									 
+	#header-search input[type="text"]:focus {
+											 box-shadow: 0 0 6px blue;
+											}
+											
+	#garis {
+			width: 100%;
+			height: 30px;
+			background-color: red;
+			margin-top: 20px;
+		   }
+		   
+	#wrapper-content {
+					  width: 100%;
+					  height: auto;
+					 }
+					 
+	#content-left {
+				   float: left;
+				   width: 20%;
+				   height: 600px;
+				   background-color: blue;
+				  }
+				  
+	#content-left ul li {
+						 display: inline-block;
+						 width: 100%;
+						 color: purple;
+						 padding: 8px 0px 8px 0px;
+						 margin-bottom: 3px;
+						 background-color: lightgray;
+						}
+						
+	#content-left ul li:hover {
+							   background-color: white;
+							  }
+							  
+	#content-center	{
+					 padding: 10px 0;
+					 float: left;
+					 width: 55%;
+					 height: 500px;
+					}
+					
+	#content-center span {
+						  font-weight: bold;
+						  margin-bottom: 10px;
+						 }
+	#content-center h4 {
+						font-weight: normal;
+					   }
+	#wrapper-center {
+					 width: 100%;
+					 height: auto;
+					 margin-left : 25px;
+					}
+	#img-wrapper {
+				  margin-right : 100px
+				  width: 100%;
+				  height: 400px;
+				  margin-top: 10px;
+				  position: relative;
+				 }
+	#img-wrapper div {
+					  width: 30%;
+					  height: 180px;
+					  float: left;
+					  margin-bottom: 40px;
+					 }
+					 
+	#img-wrapper img {
+					  width: 97%;
+					  height: 180px;
+					  border: 3px solid black;
+					 }
+					 
+
+	#gambar1:hover p {
+					  display: block;
+					 }
+
+	#gambar2:hover p {
+					  display: block;
+					 }
+				
+	#gambar3:hover p {
+					  display: block;
+					 }
+			   
+	#gambar4:hover p {
+					  display: block;
+					 }
+
+	#gambar5:hover p {
+					  display: block;
+					 }
+					 
+	#gambar6:hover p {
+					  display: block;
+					 }
+					 
+	#gambar1 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0;
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#gambar2 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#gambar3 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0;
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#gambar4 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0;
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#gambar5 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0;
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#gambar6 p {
+				background-color: gray;
+				width: 180px;
+				padding: 0px 0;
+				position: absolute;
+				color: yellow;
+				text-align: center;
+			   }
+			   
+	#content-right {
+					float: left;
+					width: 25%;
+					box-sizing: border-box;
+					background-color: #2B58F9;
+					height: 600px;
+				   }
+				   
+	#wrapper-right {
+					width: 95%;
+					height: auto;
+					margin: 10px auto;
+				   }
+				   
+	#wrapper-right ul {
+					   list-style: none;
+					   display: block;
+					   margin-left: 20px;
+					  }
+					  
+	#wrapper-right ul li {
+						  margin-top: 15px;
+						  color:white;
+						 }
+						 
+	#wrapper-right ul li::before {
+								  content: "\2022";
+								  color: black; 
+								  font-weight: bold; 
+								  display: inline-block; 
+								  width: 1em; 
+								 }
+								 
+	#wrapper-right span	{
+						 color: white;
+						}
+						
+	#footer	{
+			 background-color: lightblue;
+			 padding: 15px 0;
+			 text-align: center;
+			 clear: both;
+			 position: fixed;
+			 bottom: 0;
+			 width: 80%;
+			}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="center-box">
+			<div id="header-wrapper">
+				<div id="header">
+					<div id="nav">
+						<ul id="ul-nav">
+							<a href="#"><li>Home | </li></a>
+							<a href="#"><li>Program | </li></a>
+							<a href="#"><li>Daftar | </li></a>
+							<a href="#"><li>Tentang Kami</li></a>
+						</ul>
+					</div>
+					<div id="header-img">
+						<img src="WhatsApp Image 2020-11-09 at 8.20.58 PM.jpeg" alt="Foto Almet">
+					</div>
+					<div id="header-info-img">
+						<ul>
+							<li><h1>TEKNIK INFORMATIKA</h1></li>
+							<li><h3>Universitas Dian Nuswantoro</h3></li>
+							<li><h3>SEMARANG</h3></li>
+						</ul>
+					</div>
+					<div id="header-search">
+						<label for="cari">Search : </label>
+						<input type="text">
+					</div>
+				</div>
+			</div>
+
+			<div id="garis"></div>
+			
+			<div id="wrapper-content">
+				<div id="content-left">
+					<ul id="ul-content">
+						<a href="#"><li>   Home</li></a>
+						<a href="#"><li>   Master</li></a>
+						<a href="#"><li>   Profile</li></a>
+						<a href="#"><li>   Struktur</li></a>
+						<a href="#"><li>   Kontak</li></a>
+					</ul>
+				</div>
+				<div id="content-center">
+					<div id="wrapper-center">
+						<span>NIM : A11.2019.12079 - ADELA SALMA NADHIFA</span> <br> <br>
+						<hr style="background-color: grey;"> <br>
+						<h5>Selasa, 10 November 2020</h5>
+						<div id="img-wrapper">
+							<div id="gambar1">
+								<img src="P102293160-1.jpg" alt="gambar 1">
+								<p><span>Emergency Lamp</span><br>Rp 56000 </p>
+							</div>
+							<div id="gambar2">
+								<img src="images.jpg" alt="gambar 2">
+								<p><span>Televisi 90 inch</span><br>Rp. 13 juta </p>
+							</div>
+							<div id="gambar3">
+								<img src="40438899_4f2fa31b-b42c-4a59-8866-7772edc9ee5e_1000_726.jpg" alt="gambar 3">
+								<p><span>Laptop i7</span><br>Rp 8,7 juta </p>
+							</div>
+							<div id="gambar4">
+								<img src="download.jpg" alt="gambar 4">
+								<p>Kompor Gas Modern<span><br>Rp 5,5 juta</span> </p>
+							</div>
+							<div id="gambar5">
+								<img src="download (1).jpg" alt="gambar 5">
+								<p>Tas Sekolah<span><br>Rp 700.000</span> </p>
+							</div>
+							<div id="gambar6">
+								<img src="download (2).jpg" alt="gambar 6">
+								<p>Jam Tangan<span><br>Rp 6,1 juta</span> </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="content-right">
+					<div id="wrapper-right">
+						<span><b> Planning Kegiatan </b></span>
+						<ul>
+							<li>Seminar Nasional</li>
+							<li>Bursa Kerja</li>
+							<li>Pelatihan Web</li>
+							<li>Pemrograman Mobile</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<h3> A11.2019.12079 - Teknik Informatika - UDINUS (2020)</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
